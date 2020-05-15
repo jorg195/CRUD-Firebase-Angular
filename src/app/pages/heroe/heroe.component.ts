@@ -57,20 +57,30 @@ export class HeroeComponent implements OnInit {
 
       peticion = this.heroesService.actualizarHeroe(this.heroe)
 
+      peticion.subscribe(resp => {
+
+        Swal.fire({
+          title: this.heroe.nombre,
+          text: 'Se actualizó correctamente',
+          icon: 'success'
+        })
+      })
+
     }else{
 
       peticion = this.heroesService.crearHeroe(this.heroe)
 
+      peticion.subscribe(resp => {
+
+        Swal.fire({
+          title: this.heroe.nombre,
+          text: 'Se creó correctamente',
+          icon: 'success'
+        })
+      })
+
     }
 
-    peticion.subscribe(resp => {
-
-      Swal.fire({
-        title: this.heroe.nombre,
-        text: 'Se actualizó correctamente',
-        icon: 'success'
-      })
-    })
 
   }
 
